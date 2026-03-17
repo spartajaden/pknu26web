@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 100%;
+        height: 80vh;
+      }
+      td {
+        border: 1px solid #ccc;
+      }
+      .header,
+      .footer {
+        height: 15%;
+        background-color: cadetblue;
+      }
+      .footer {
+        height: 10%;
+      }
+      .nav {
+        height: 5%;
+      }
+      .content {
+        height: 70%;
+      }
+      .center {
+        width: 60%;
+        background-color: antiquewhite;
+      }
+      #title {
+        font-size: 3rem;
+        text-align: center;
+      }
+      .nav {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>테이블 응용</h1>
+    <hr />
+    <a href="index.html">홈으로</a><br /><br />
+
+    <!-- table>(tr>th*3)*3 -->
+    <table>
+      <tr class="header">
+        <td colspan="3" id="title">NAVER</td>
+      </tr>
+      <tr class="nav">
+        <td colspan="3">
+          메일 | 카페 | 블로그 | 지식인 | 쇼핑 | 뉴스 | 증권 | 부동산 | 지도 |
+          웹툰 | 지지직
+        </td>
+      </tr>
+      <tr class="content">
+        <td><img src="./aside.png" alt="Aside" /></td>
+        <td class="center">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis,
+          ipsa voluptatum numquam delectus doloribus error non minima quam
+          facilis totam blanditiis consequuntur obcaecati. In et qui cupiditate
+          praesentium tenetur doloribus nam, fugit earum id dolorum magni quos
+          voluptas consequuntur modi ad, beatae aliquam odio excepturi sequi aut
+          maxime exercitationem totam, expedita temporibus! Corporis dolores id
+          voluptas hic facilis a non neque. Obcaecati sed laborum cum nostrum
+          quae, ad, ipsum qui dolores adipisci aspernatur alias. Vitae vel
+          quibusdam est cum quod temporibus, iste sit nihil perspiciatis
+          expedita dolorem natus repellendus sint laudantium illo accusantium
+          officia minus non porro impedit omnis alias!
+        </td>
+        <td><img src="./aside.png" alt="" /></td>
+      </tr>
+      <tr class="footer">
+        <td colspan="3"></td>
+      </tr>
+    </table>
+  </body>
+</html>

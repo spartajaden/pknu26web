@@ -9,11 +9,30 @@
       }
       th,
       td {
-        border: 2px solid blue;
-        background-color: antiquewhite;
+        border: 2px solid black;
+        background-color: rgb(255, 233, 205);
         padding: 10px;
         width: 100px;
         height: 70px;
+      }
+      #row-line,
+      #col-line {
+        background-color: darkturquoise;
+      }
+      .lines1 {
+        background-color: darkseagreen;
+      }
+
+      .bottom- {
+        border-bottom: 5px solid blue;
+      }
+
+      .lines2 {
+        background-color: red;
+      }
+
+      .lines3 {
+        background-color: yellow;
       }
     </style>
   </head>
@@ -27,32 +46,30 @@
         표를 아파트 구조처럼 생각해보기
       </caption>
       <tr>
-        <th>line 1</th>
-        <th>line 2</th>
-        <th>line 3</th>
-        <th>line 4</th>
-        <th>line 5</th>
+        <th>Line 1</th>
+        <th>Line 2</th>
+        <th>Line 3</th>
+        <th>Line 4</th>
+        <th>Line 5</th>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="lines1">1행 1열</td>
+        <td style="color: red">1행 2열</td>
+        <td style="color: red">1행 3열</td>
+        <td style="color: red, green">1행 4열</td>
+        <td rowspan="2" id="row-line">1행 5열</td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="lines1">2행 1열</td>
+        <td colspan="2" id="col-line">2행 2열</td>
+        <td style="color: green">2행 3열</td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="lines1 bottom-lines">3행 1열</td>
+        <td class="bottom-lines">3행 2열</td>
+        <td class="lines3">3행 3열</td>
+        <td class="lines3">3행 4열</td>
+        <td class="lines3">3행 5열</td>
       </tr>
     </table>
   </body>
