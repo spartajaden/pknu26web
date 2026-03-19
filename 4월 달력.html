@@ -36,20 +36,20 @@
       .wrapper > div:nth-of-type(7n + 1) {
         color: blue;
       }
-      .wrapper > div:nth-of-type(4),
+      .wrapper > div:nth-of-type(7),
       .wrapper > div:nth-of-type(7n) {
         color: red;
       }
-      .wrapper > div:nth-of-type(-n + 7) {
+      .wrapper > div:nth-of-type(n + 4):nth-of-type(-n + 10) {
         background-color: aqua;
       }
-      .wrapper > div:nth-of-type(n + 12):nth-of-type(-n + 17) {
+      .wrapper > div:nth-of-type(n + 13):nth-of-type(-n + 18) {
         background-color: yellow;
       }
-      .wrapper > div:nth-of-type(n + 27):nth-of-type(-n + 30) {
+      .wrapper > div:nth-of-type(n + 30):nth-of-type(-n + 36) {
         background-color: rgb(48, 172, 95);
       }
-      .wrapper > div:nth-of-type(n + 14):nth-of-type(-n + 16) {
+      .wrapper > div:nth-of-type(n + 17):nth-of-type(-n + 19) {
         color: green;
       }
     </style>
@@ -61,6 +61,9 @@
     <!-- div.box{$}*30 -->
     <h2>2026년 4월 달력</h2>
     <div class="wrapper">
+      <div>empty</div>
+      <div>empty</div>
+      <div>empty</div>
       <div>1</div>
       <div>2</div>
       <div>3</div>
