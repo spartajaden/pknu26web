@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사진가운데</title>
+    <style>
+      :root {
+        --width1: 400px;
+      }
+      div {
+        width: 100%;
+      }
+      /* img {
+          display: block;
+          margin: 10px auto;
+        } */
+      img {
+        position: relative;
+        width: var(--width1);
+        left: calc(50% - var(--width1) / 2);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>가운데 정렬</h1>
+    <hr />
+    <a href="index.html">홈으로</a><br />
+    <div>
+      <img
+        src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA3MjRfMjQg%2FMDAxNzUzMzQ5MjgwNDAx.wK-R5jFKXRlE1dA0wrtXhCaWkYqVyqVXxZt0FT5t-7Ug.czgxV0vVMqJkPP7vhsOeAlmUnEQb4Ti5-j-hQh6lVpgg.PNG%2FKakaoTalk_20240430_221133719_04.png&type=a340"
+        alt=""
+      />
+    </div>
+  </body>
+</html>
