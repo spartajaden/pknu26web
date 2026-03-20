@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>keyframes</title>
+    <style>
+      div {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        background-color: rgb(96, 130, 194);
+        animation: mymove 2s ease infinite;
+      }
+      @keyframes mymove {
+        0% {
+          transform: translate(0);
+        }
+        50% {
+          transform: translate(0, 300px);
+        }
+        100% {
+          transform: translate(300px, 0), scaleX(70), scaleY(30);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>keyframes</h1>
+    <hr />
+    <a href="index.html">홈으로</a><br />
+    <div></div>
+  </body>
+</html>

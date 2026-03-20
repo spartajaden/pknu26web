@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex</title>
+    <style>
+      #box {
+        display: flex;
+        /* justify-content: space-evenly; */
+        justify-content: center;
+        background-color: rgb(33, 44, 105);
+      }
+      #box {
+        height: 150vh;
+        display: flex;
+        /* justify-content: space-evenly; */
+        justify-content: center;
+        /* align-items: stretch; */
+        align-items: center;
+        background-color: rgb(42, 152, 185);
+      }
+      #box > div {
+        width: 500px;
+        height: 800px;
+        background-color: rgb(175, 169, 82);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #box > div:nth-of-type(2) {
+        width: 1400px;
+        height: 800px;
+        background-color: rgb(223, 221, 207);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Never</h1>
+    <hr />
+    <a href="index.html"></a><br />
+    <div id="box">
+      <div>aside</div>
+      <div>article</div>
+      <div>section</div>
+    </div>
+  </body>
+</html>
