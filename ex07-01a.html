@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>간단한 쇼핑몰</title>
+    <style>
+      h1 {
+        width: 100%;
+        text-align: center;
+        background-color: rgb(122, 42, 104);
+        color: white;
+        position: fixed;
+        top: 10px;
+        border-radius: 10px;
+        padding: 5px;
+        margin-top: 20px;
+      }
+      /* h2 {
+        color: #777;
+        text-align: center;
+      } */
+      ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-top: 60px;
+      }
+      li {
+        width: 300px;
+        height: 200px;
+        padding: 15px;
+        border: 1px solid #aaa;
+        border-radius: 10px;
+        margin: 10px;
+        background-color: rgb(252, 249, 244);
+        /* overflow: hidden; */
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      .caption {
+        background-color: rgba(0, 0, 0, 0.507);
+        color: white;
+        border-radius: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: all 0.5s ease;
+        opacity: 0;
+      }
+      li:hover .caption {
+        transform: translateY(-205px);
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html">홈으로</a><br />
+    <!-- div.box>h1{신상품 목록}+ul>(li>img+div.caption>h2{상품$} + p{상품$ 설명텍스트}  +p{가격: 1$,12$원}) *9 -->
+    <div class="box">
+      <h1>신상품 목록</h1>
+      <ul>
+        <li>
+          <img
+            src="https://ae01.alicdn.com/kf/S0d6af9b515364431bbc04a9281e2cbdcY/-.jpg"
+            alt=""
+          />
+          <div class="caption">
+            <h2>상품1</h2>
+            <p>상품1 설명텍스트</p>
+            <p>가격: 11,121원</p>
+          </div>
+        </li>
+        <li>
+          <img
+            src="https://th.bing.com/th/id/OIP.ZC0Nn3zMceO2J-z-1X-MZwHaHa?w=162&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+            alt="삼양라면"
+          />
+          <div class="caption">
+            <h2>상품2</h2>
+            <p>상품2 설명텍스트</p>
+            <p>가격: 12,122원</p>
+          </div>
+        </li>
+        <li>
+          <img
+            src="https://th.bing.com/th/id/OIP.PXO2vGYXVyL0agiftXizxAHaHa?w=211&h=211&c=7&r=0&o=7&pid=1.7&rm=3"
+            alt="고양이 타우린 워터 참치"
+          />
+          <div class="caption">
+            <h2>상품3</h2>
+            <p>상품3 설명텍스트</p>
+            <p>가격: 13,123원</p>
+          </div>
+        </li>
+        <li>
+          <img
+            src="https://th.bing.com/th/id/OIP.NY35ll_u6LyU259LmtKwwAHaHa?w=190&h=190&c=7&r=0&o=7&pid=1.7&rm=3"
+            alt="고양이 캐츠랑 사료"
+          />
+          <div class="caption">
+            <h2>상품4</h2>
+            <p>상품4 설명텍스트</p>
+            <p>가격: 14,124원</p>
+          </div>
+        </li>
+        <li>
+          <img
+            src="https://th.bing.com/th/id/OIP.s9AO1soHNZ_6NyMtagTSoAHaHa?w=220&h=220&c=7&r=0&o=7&pid=1.7&rm=3"
+            alt=""
+          />
+          <div class="caption">
+            <h2>상품5</h2>
+            <p>상품5 설명텍스트</p>
+            <p>가격: 15,125원</p>
+          </div>
+        </li>
+        <li>
+          <img
+            src="https://th.bing.com/th/id/OIP.3rAdVPsNN4NuSUqfzfB0OgHaEK?w=312&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+            alt=""
+          />
+          <div class="caption">
+            <h2>상품6</h2>
+            <p>상품6 설명텍스트</p>
+            <p>가격: 16,126원</p>
+          </div>
+        </li>
+        <li>
+          <img
+            src="https://th.bing.com/th/id/OIP.qKFK39rof0ADRputSSFz7wHaHa?w=140&h=181&c=7&r=0&o=7&pid=1.7&rm=3"
+            alt=""
+          />
+          <div class="caption">
+            <h2>상품7</h2>
+            <p>상품7 설명텍스트</p>
+            <p>가격: 17,127원</p>
+          </div>
+        </li>
+        <li>
+          <img
+            src="https://th.bing.com/th/id/OIP._OOO0aUAIWlry82f1wvlowHaHa?w=180&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+            alt=""
+          />
+          <div class="caption">
+            <h2>상품8</h2>
+            <p>상품8 설명텍스트</p>
+            <p>가격: 18,128원</p>
+          </div>
+        </li>
+        <li>
+          <img
+            src="https://th.bing.com/th/id/OIP.itrNFhf-0eycw0iHwJIVLQHaHa?w=186&h=186&c=7&r=0&o=7&pid=1.7&rm=3"
+            alt="노브랜드 간식소시지"
+          />
+          <div class="caption">
+            <h2>상품9</h2>
+            <p>상품9 설명텍스트</p>
+            <p>가격: 19,129원</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
