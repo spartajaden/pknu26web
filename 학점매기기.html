@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script>
+      const inp = parseInt(prompt("점수를 입력하세요 (0-100):"));
+      if (isNaN(inp) || inp < 0 || inp > 100) {
+        alert("유효한 점수를 입력하세요.");
+        document.write(`<h2>유효하지 않은 입력입니다.</h2>`);
+      } else {
+        let grade;
+        if (inp == 100) {
+          grade = "A++";
+        } else if (inp >= 90 && inp < 100) {
+          grade = "A";
+        } else if (inp >= 80 && inp < 90) {
+          grade = "B";
+        } else if (inp >= 70 && inp < 80) {
+          grade = "C";
+        } else if (inp >= 60 && inp < 70) {
+          grade = "D";
+        } else {
+          grade = "F";
+        }
+        document.write(`<h2>점수: ${inp}, 학점: ${grade}</h2>`);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
