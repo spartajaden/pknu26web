@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style>
+      h1 {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>과일목록관리</h1>
+    <script>
+      //1. {box} 중에 제거하고 싶은 품목을 입력하세요.
+      //단, 없으면 없다고 알려주기
+      const arr = [
+        "딸기",
+        "바나나",
+        "사과",
+        "수박",
+        "배",
+        "키위",
+        "복숭아",
+        "포도",
+      ];
+      const inp = +prompt(
+        "딸기,바나나,사과,수박,배,키위,복숭아,포도 외에 제거하고 싶은 품목을 입력하세요.",
+      );
+      const remove_box = arr.indexOf(inp);
+      /* indexOf 찾는 값의 인덱스를 반환, 없으면 -1을 반환 */
+      if (remove_box == "키위") {
+        console.log(
+          `${remove_box}번째 인덱스로 ${arr[remove_box]}값이 있습니다.`,
+        );
+      } else {
+        console.log("찾는 요소가 없습니다.");
+      }
+      //3. 정리된 품목은 {box} 입니다.
+      arr.splice(arr.length, "키위"); // 키위 삭제
+      console.log(arr);
+    </script>
+  </body>
+</html>
