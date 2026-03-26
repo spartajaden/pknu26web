@@ -29,8 +29,10 @@
         let num3 = 100;
         fn3();
         function fn3() {
-            console.log(`함수1 내부에서`)
+            console.log(`함수1 내부에서 변수 값은 ${num3}이다`);
+            num3 = 200;
         }
+        console.log(`함수1 외부에서 변수 값은 ${num3}이다`);
     </script>
 </body>
 </html>
