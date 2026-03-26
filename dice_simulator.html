@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주사위 시뮬레이터</title>
+    <style>
+      h2 {
+        text-align: center;
+      }
+
+      /* ── 막대 그래프 박스 (ex09-11b와 동일 구조) ── */
+      #box {
+        background-color: rgb(235, 216, 191);
+        width: 400px;
+        height: 300px; /* 6면이므로 높이 조금 늘림 */
+        margin: 10% auto;
+        padding: 40px 10px 40px 30px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.562);
+        border-radius: 2dvb;
+      }
+      #box > div {
+        height: 30px;
+        margin: 5px;
+        background-color: rgb(113, 180, 211);
+        box-shadow: 10px 10px 20px rgba(58, 43, 126, 0.562);
+        border-radius: 0 15px 15px 0;
+      }
+
+      /* ── 테이블 (ex09-11b와 동일 구조) ── */
+      table {
+        width: 400px;
+        margin: auto;
+      }
+      tr,
+      th,
+      td {
+        background-color: rgb(14, 104, 107);
+        color: white;
+        box-shadow: 10px 10px 20px rgba(50, 50, 50, 0.5);
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+      }
+      th {
+        background-color: rgb(99, 36, 36);
+      }
+      td:last-of-type {
+        background-color: rgb(34, 42, 156);
+      }
+
+      /* ── 막대 안 라벨 (ex09-11b span과 동일) ── */
+      span {
+        position: absolute;
+        color: white;
+        font-weight: bold;
+        display: block;
+        text-align: right;
+        line-height: 1.7rem;
+        margin: 0 10px;
+        text-shadow: 5px 5px 20px rgb(0, 0, 0);
+      }
+
+      /* ── 새로고침 버튼 ── */
+      button {
+        display: block;
+        margin: 10px auto;
+        padding: 8px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const epoch = 100000; // 시행 횟수
+      let turn = 0; // while 증가값 (ex09-11b와 동일)
+      const arr = [0, 0, 0, 0, 0, 0]; // 주사위 6면 카운트 배열
+      let verf = "검증중";
+
+      // ── 시뮬레이션 (while 루프 — ex09-11b와 동일 방식) ──
+      while (turn < epoch) {
+        const ran = Math.floor(Math.random() * 6); // 0 ~ 5 정수
+        if (ran == 0) {
+          arr[0]++;
+        } else if (ran == 1) {
+          arr[1]++;
+        } else if (ran == 2) {
+          arr[2]++;
+        } else if (ran == 3) {
+          arr[3]++;
+        } else if (ran == 4) {
+          arr[4]++;
+        } else {
+          arr[5]++;
+        }
+        turn++;
+      }
+
+      // ── 검증 프로그램 (ex09-11b와 동일 구조) ──
+      if (epoch == arr[0] + arr[1] + arr[2] + arr[3] + arr[4] + arr[5]) {
+        verf = "검증완료";
+      } else {
+        verf = "검증이상";
+        alert("검증이상");
+      }
+
+      // ── 각 면 확률 계산 → for문으로 pct[] 배열에 저장 ──
+      const pct = [];
+      const dice = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"]; // 주사위 이모지 배열
+
+      for (let i = 0; i < 6; i++) {
+        pct[i] = ((arr[i] / epoch) * 100).toFixed(1);
+      }
+
+      // ── 테이블 행 → for문으로 생성 ──
+      let rows = "";
+      for (let i = 0; i < 6; i++) {
+        rows += `
+          <tr>
+            <td>${dice[i]} ${i + 1}</td>
+            <td>16.7%</td>
+            <td>${arr[i]}</td>
+            <td>${pct[i]}%</td>
+          </tr>`;
+      }
+
+      // ── 막대 그래프 div → for문으로 생성 ──
+      let bars = "";
+      for (let i = 0; i < 6; i++) {
+        bars += `
+          <div style="width: ${pct[i] * 1.5}%"><span>${dice[i]} ${i + 1} (${pct[i]}%)</span></div>`;
+      }
+
+      // ── 템플릿 리터럴로 HTML 출력 (ex09-11b와 동일 방식) ──
+      let list = `
+        <h2>${epoch}회 (${verf})</h2>
+
+        <table>
+          <tr>
+            <th>주사위 눈</th>
+            <th>이론 확률</th>
+            <th>출현 횟수</th>
+            <th>통계</th>
+          </tr>
+          ${rows}
+        </table>
+
+        <div id="box">
+          ${bars}
+        </div>
+
+        <button onclick="location.reload(true)">다시실행</button>
+      `;
+
+      document.body.innerHTML = list;
+    </script>
+  </body>
+</html>
