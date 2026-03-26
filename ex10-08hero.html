@@ -4,64 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>함수표현식으로 게임</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        #output { background-color: #f4f4f4; padding: 15px; border-radius: 5px; margin-top: 10px; min-height: 50px; }
+        .highlight { font-weight: bold; color: #e74c3c; }
+    </style>
 </head>
 <body>
-    영웅의 이름을 입력하세요 <input type="heroName" /> <br />
-    영웅의 레벨을 입력하세요 <input type="level" id="1부터 20까지" /> <br />
-    영웅의 스킬을 입력하세요 <input type="skill" id="skill" /> <br />
-    
-    <select id="skill">
+    영웅의 이름을 입력하세요: <input type="text" id="heroName" placeholder="이름 입력" /> <br />
+    영웅의 레벨을 입력하세요: <input type="number" id="level" min="1" max="20" value="1" /> <br />
+    영웅의 스킬을 선택하세요: 
+    <select id="skillSelect">
       <option value="fire">fire</option>
       <option value="ice">ice</option>
       <option value="slow">slow</option>
     </select>
-    <br />
-    <button onclick="run()">실행</button>
+    <br /><br />
+    <button onclick="run()">실행하기</button>
     <hr />
-    <div id="output"></div>
-    <br />
+    <div id="output">결과가 여기에 표시됩니다.</div>
 
     <script>
-        const lol = function(heroName, level = 7, cb) {
+        // ① cb → skillName 으로 변경 / ④ level = 7 기본값 제거
+        const lol = function(heroName, level, skillName) {
 
-            if (cb === "fire") cb = fire;
-            else if (cb === "ice") cb = ice;
-            else if (cb === "slow") cb = slow;
+            // ② resultHtml, outputDiv 선언 추가
+            let resultHtml = "";
+            const outputDiv = document.querySelector("#output");
 
-            document.write("=======================<br>");        
-            document.write(`${heroName}님이 ${level}레벨이 되었습니다.<br>`);        
-            document.write("=======================<br>");
+            // 콜백 함수 매핑
+            let cb;
+            if (skillName === "fire") cb = fire;
+            else if (skillName === "ice") cb = ice;
+            else if (skillName === "slow") cb = slow;
 
             if (level >= 6) {
-                document.write(`${heroName}님이 궁극기를 씁니다.<br>`);
-                cb(level);
+                resultHtml += `<strong>${heroName}님이 궁극기를 사용합니다!</strong><br>`;
+                resultHtml += cb(level); // 콜백 함수 실행 결과 추가
             } else {
-                document.write(`${heroName}님이 깨작 평타를 때립니다.<br>`);
+                resultHtml += `${heroName}님이 소소하게 평타를 때립니다. (레벨 6부터 궁극기 가능)<br>`;
             }
-        }
 
+            outputDiv.innerHTML = resultHtml; // 최종 결과를 화면에 출력
+        };
+
+            // ③ document.write → return 문자열로 변경
             function fire(ff) {
+               let result = "";
                for (let i = 1; i < ff + 1; i++) {
-                  document.write(`${ff}레벨 이어서 ${i}개 메테오를 던집니다.<br>`);
+                  result += `${ff}레벨 이어서 ${i}개 메테오를 던집니다.<br>`;
                }
+               return result;
             }
             function ice(ii) {
+               let result = "";
                for (let i = 1; i < ii; i++) {
-                  document.write(`${ii}레벨 이어서 ${i * 2}개 얼음을 던집니다.<br>`);
+                  result += `${ii}레벨 이어서 ${i * 2}개 얼음을 던집니다.<br>`;
                }
+               return result;
             }
             function slow(ss) {
+               let result = "";
                for (let i = ss; 0 < i; i--) {
-                  document.write(`${ss}레벨 이어서 다리를 공격하여 이동속도를 ${i}% 줄입니다.<br>`);
+                  result += `${ss}레벨 이어서 다리를 공격하여 이동속도를 ${i}% 줄입니다.<br>`;
               }
+              return result;
             }
 
-        function ctext() {
-        const textArea = document.querySelector("#heroname");
-        const disp = document.querySelector("#level");
-        disp.textContent = `캐릭터 : ${textArea.value.length}`;
-      }
-        lol("cjh", 11, fire);
+        // 버튼 클릭 시 실행될 함수
+        const run = function() {
+            const name = document.querySelector("#heroName").value;
+            const level = parseInt(document.querySelector("#level").value);
+            const skill = document.querySelector("#skillSelect").value;
+
+            if(!name) {
+                alert("영웅 이름을 입력해주세요!");
+                return;
+            }
+
+            lol(name, level, skill);
+        };
     </script>
   </body>
 </html>
