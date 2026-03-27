@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, quam.
+      Laudantium sint explicabo neque eaque vitae sunt architecto. Quam
+      consequatur, assumenda voluptatem exercitationem aut sunt corporis
+      deserunt provident illo nobis soluta, officiis dolorem! Excepturi corrupti
+      dolore amet, maxime soluta recusandae deleniti quia adipisci, quaerat
+      temporibus veritatis qui, cupiditate sapiente. Nobis possimus ullam,
+      aspernatur enim ipsa laudantium voluptas itaque molestiae pariatur
+      commodi, nostrum officiis. Minus in distinctio exercitationem sapiente
+      aspernatur, aut ullam perspiciatis cumque nesciunt modi cum soluta
+      quibusdam minima accusamus ipsam autem libero ea non alias adipisci quo?
+      Accusantium odit ipsa praesentium. Sint consectetur reprehenderit possimus
+      porro minus error cumque?
+    </div>
+    <script>
+      // 1. app 의 텍스트의 각 단어 길이 중에서
+      // 2. 5자 보다 큰 길이는 big 이라는 곳에 담고
+      // 3. 5자 보다 작으면 small 에 담는다.
+
+      const text = document.querySelector("#app");
+      const str = text.textContent;
+
+      const words = str.split(""); // 공백 제거
+      const big = [];
+      const small = [];
+
+      for (let a = 0; a < words.length; a++) {
+        if (words[a].length > 5) {
+          big.push(words[a]);   // 5자 보다 큼
+        } else {
+          small.push(words[a]); // 5자 보다 작음
+        }
+      }
+
+      console.log(big, "big");
+      console.log(small, "small");
+    </script>
+  </body>
+</html>
