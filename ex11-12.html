@@ -28,20 +28,20 @@
       const text = document.querySelector("#app");
       const str = text.textContent;
 
-      const words = str.split(""); // 공백 제거
+      const words = str.trim().split(/\s+/); // 공백 제거
       const big = [];
       const small = [];
 
       for (let a = 0; a < words.length; a++) {
         if (words[a].length > 5) {
-          big.push(words[a]);   // 5자 보다 큼
+          big.push(words[a]); // 5자 보다 큼
         } else {
           small.push(words[a]); // 5자 보다 작음
         }
       }
 
-      console.log(big, "big");
-      console.log(small, "small");
+      console.log(big);
+      console.log(small);
     </script>
   </body>
 </html>
