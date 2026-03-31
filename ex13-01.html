@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>model</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      .modals {
+        margin: 0;
+        padding: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modals.show {
+        display: flex;
+      }
+
+      .test {
+        width: 400px;
+        padding: 35px;
+        border-radius: 20px;
+        background-color: white;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7);
+      }
+
+      .login-modal {
+        background-color: white;
+        padding: 35px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.5);
+        width: 300px;
+      }
+
+      .login-modal h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .login-modal input {
+        width: 95%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .login-modal button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(55, 76, 170);
+        color: white;
+        margin: 10px 0;
+        cursor: pointer;
+      }
+
+      .login-modal button:hover {
+        background-color: rgb(153, 170, 245);
+      }
+
+      .login-modal button:last-of-type {
+        background-color: rgb(123, 173, 238);
+      }
+
+      .login-modal small {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="modals" id="loginModal">
+      <div class="login-modal">
+        <h2>로그인</h2>
+        <hr />
+        <form>
+          <label for="id">ID:</label>
+          <input type="text" id="id" placeholder="아이디입력" />
+          <label for="pw">password:</label>
+          <input type="password" id="pw" placeholder="패스워드입력" />
+          <button type="button" class="btn-login">로그인</button>
+          <hr />
+          <small>회원이 아니신 분은 회원가입을 해주세요.</small>
+          <button type="button" class="btn-signup">회원가입</button>
+        </form>
+      </div>
+    </div>
+
+    <h1>간단한 뒷 배경내용들~</h1>
+
+    <button class="btn btn-success" id="loginBtn">로그인</button>
+
+    <button id="btns" class="btn btn-primary" type="button">
+      <span id="types" class="spinner-border-sm"></span>
+      <span id="name">버튼</span>
+    </button>
+    <button class="btn" type="button">
+      <span id="spinner" class="spinner-border text-info"></span>
+    </button>
+    <script>
+      // 로그인 모달 제어
+      const loginModal = document.querySelector("#loginModal");
+      const loginBtn = document.querySelector("#loginBtn");
+
+      loginBtn.addEventListener("click", () => {
+        loginModal.classList.add("show");
+      });
+
+      // 모달 배경 클릭시 닫기
+      loginModal.addEventListener("click", (e) => {
+        if (e.target === loginModal) {
+          loginModal.classList.remove("show");
+        }
+      });
+
+      // 로그인/회원가입 버튼 클릭 처리
+      const loginFormBtn = document.querySelector(".btn-login");
+      const signupBtn = document.querySelector(".btn-signup");
+
+      loginFormBtn.addEventListener("click", () => {
+        alert("로그인 버튼 클릭");
+        loginModal.classList.remove("show");
+      });
+
+      signupBtn.addEventListener("click", () => {
+        alert("회원가입 페이지로 이동");
+        loginModal.classList.remove("show");
+      });
+
+      // 기존 버튼 기능
+      const btn = document.querySelector("#btns");
+      btn.addEventListener("click", () => {
+        const type = document.querySelector("#types");
+        const names = document.querySelector("#name");
+        type.classList.toggle("spinner-border");
+        if (type.classList.contains("spinner-border")) {
+          names.textContent = "Loading...";
+        } else {
+          names.textContent = "버튼";
+        }
+      });
+      const spinner = document.querySelector("#spinner");
+      const stopSpiner = () => spinner.classList.remove("spinner-border");
+      setTimeout(stopSpiner, 2000);
+    </script>
+
+    <h3>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+      provident dolores, impedit ipsam aperiam praesentium suscipit rem
+      voluptatum sed. Distinctio incidunt tenetur reprehenderit sequi ad ipsum,
+      perspiciatis molestias odio numquam facere nam unde nihil praesentium
+      maiores nostrum a debitis voluptatibus. Neque et distinctio quia rem
+      accusantium ullam? Dolorum, mollitia consequatur!
+    </h3>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+      provident dolores, impedit ipsam aperiam praesentium suscipit rem
+      voluptatum sed. Distinctio incidunt tenetur reprehenderit sequi ad ipsum,
+      perspiciatis molestias odio numquam facere nam unde nihil praesentium
+      maiores nostrum a debitis voluptatibus. Neque et distinctio quia rem
+      accusantium ullam? Dolorum, mollitia consequatur!
+    </p>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+      provident dolores, impedit ipsam aperiam praesentium suscipit rem
+      voluptatum sed. Distinctio incidunt tenetur reprehenderit sequi ad ipsum,
+      perspiciatis molestias odio numquam facere nam unde nihil praesentium
+      maiores nostrum a debitis voluptatibus. Neque et distinctio quia rem
+      accusantium ullam? Dolorum, mollitia consequatur!
+    </p>
+    <h3>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+      provident dolores, impedit ipsam aperiam praesentium suscipit rem
+      voluptatum sed. Distinctio incidunt tenetur reprehenderit sequi ad ipsum,
+      perspiciatis molestias odio numquam facere nam unde nihil praesentium
+      maiores nostrum a debitis voluptatibus. Neque et distinctio quia rem
+      accusantium ullam? Dolorum, mollitia consequatur!
+    </h3>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
