@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>chatting bot</title>
+    <style>
+      .chat-container {
+        background-color: white;
+        width: 500px;
+        height: 400px;
+        margin: auto; /* 중간 배치 */
+        padding: 1rem 3rem 0 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        transform: translateY(50%);
+        border-radius: 20px;
+      }
+      .message {
+        display: flex;
+        flex-direction: column;
+      }
+      .messages {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      .message.bot {
+        align-items: flex-start;
+      }
+      .message.user {
+        align-items: flex-end;
+      }
+      .name {
+        font-size: 0.8rem;
+        color: #5b7266;
+        margin: 0 10px 2px;
+      }
+      .bubble {
+        max-width: 300px;
+        background-color: rgb(227, 195, 113);
+        padding: 0.7rem 2rem;
+        border-radius: 20px;
+        word-break: break-word;
+      }
+      .user .bubble {
+        background-color: yellowgreen;
+        text-align: right;
+      }
+      .user .name {
+        text-align: right;
+      }
+      .chat-container::-webkit-scrollbar {
+        background-color: aliceblue;
+        border-radius: 0 5px 5px 0;
+        width: 30px;
+      }
+      .chat-container::-webkit-scrollbar-thumb {
+        background-color: rgb(89, 156, 233);
+        border-radius: 5px;
+      }
+      .input-area {
+        display: flex;
+        gap: 10px;
+        padding: 10px 0;
+      }
+
+      #userInput {
+        flex: 1;
+        padding: 10px;
+        border-radius: 10px; /* user 메세지 입력창 반지름 */
+        border: 1px solid #ccc; /* border는 반지름 굵기임 */
+      }
+
+      #sendBtn {
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        background-color: gold;
+        cursor: pointer;
+      }
+      .delete-btn {
+        margin-top: 5px;
+        background: none;
+        border: none;
+        color: red;
+        cursor: pointer;
+        font-size: 0.7rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="messages">
+        <div class="message bot">
+          <div class="name">chatting bot</div>
+          <div class="bubble">안녕하세요. 무엇을 도와드릴까요?</div>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <input id="userInput" type="text" placeholder="메시지를 입력하세요" />
+        <button id="sendBtn">전송</button>
+      </div>
+    </div>
+
+    <script>
+      const messages = document.querySelector(".messages"); // document.querySelector는 자바스크립트가 HTML 안에 원하는 물건을 찾아내는 집게 손
+      const input = document.querySelector("#userInput");
+      const sendBtn = document.querySelector("#sendBtn");
+
+      function addUserMessage(id, text) {
+        const message = document.createElement("div"); // document.createElement는 요소를 추가하겠다는 것임.
+        message.classList.add("message", "user");
+        message.dataset.id = id;
+
+        const name = document.createElement("div"); // document.createElement는 요소를 추가하겠다는 것임.
+        name.classList.add("name");
+        name.textContent = "나";
+
+        const bubble = document.createElement("div"); // document.createElement는 요소를 추가하겠다는 것임.
+        bubble.classList.add("bubble");
+        bubble.textContent = text;
+
+        const deleteBtn = document.createElement("button"); // document.createElement는 요소를 추가하겠다는 것임.
+        deleteBtn.textContent = "삭제";
+        deleteBtn.classList.add("delete-btn");
+
+        deleteBtn.addEventListener("click", () => {
+          // addEventlistener은 이벤트 감지기이며 행동을 감시하는 눈으로 이해하면 쉬움(버튼 클릭).
+          message.remove();
+
+          let chatHistory =
+            JSON.parse(localStorage.getItem("chatHistory")) || [];
+          chatHistory = chatHistory.filter((msg) => msg.id !== id);
+          localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
+        });
+
+        message.appendChild(name); // appendChild는 요소를 추가하기 이며, 물건을 추가하는 손으로 생각하면 쉬움(화면에 글자 추가하기).
+        message.appendChild(bubble);
+        message.appendChild(deleteBtn);
+
+        messages.appendChild(message);
+
+        messages.scrollTop = messages.scrollHeight;
+      }
+
+      function saveMessage(id, text) {
+        let chatHistory = JSON.parse(localStorage.getItem("chatHistory")) || [];
+        chatHistory.push({ id, sender: "user", text });
+        localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
+      }
+
+      function loadMessages() {
+        const saved = JSON.parse(localStorage.getItem("chatHistory")) || [];
+        saved.forEach((msg) => {
+          // forEach는 자바스크립트에서 배열(Array) 안에 들어있는 아이들을 하나씩 꺼내서 동일한 작업을 시키고 싶을 때 사용하는 아주 편리한 도구이며, 학교 선생님이 출석부에 있는 학생들의 이름을 한 명씩 부르며 출석 체크를 하는 것과 비슷함.
+          addUserMessage(msg.id, msg.text);
+        });
+      }
+
+      sendBtn.addEventListener("click", () => {
+        // addEventlistener은 이벤트 감지기이며 행동을 감시하는 눈으로 이해하면 쉬움(버튼 클릭).
+        const text = input.value.trim();
+        if (text === "") return;
+
+        const id = Date.now();
+        addUserMessage(id, text);
+        saveMessage(id, text);
+
+        input.value = "";
+      });
+
+      input.addEventListener("keydown", (e) => {
+        // addEventlistener은 이벤트 감지기이며 행동을 감시하는 눈으로 이해하면 쉬움(버튼 클릭).
+        if (e.key === "Enter") {
+          sendBtn.click();
+        }
+      });
+
+      loadMessages();
+    </script>
+  </body>
+</html>
+
+- style 부분 : CSS, - div 부분 : HTML, - script 부분 : JavaScript
