@@ -2041,3 +2041,60 @@ modalOverlay.addEventListener('click', () => {
 
 Modal 창은 사용자 경험을 향상시키는 강력한 UI 요소이지만, 접근성, UX, 성능 측면을 신중하게 고려하여 구현해야 합니다. 면접에서는 Modal 창의 정의, 장단점, 활용 사례, 그리고 접근성 및 구현 방식에 대한 질문이 나올 수 있으니 잘 준비해두시는 것이 좋습니다.
 
+## [RESTful]
+
+### 프론트는 믿지마세요. 100%
+### 서버가 조심. 인증.
+
+### [RESTful]
+GET,  POST ,          ( PUT, PATCH, DELETE )
+
+### [GET]
+Query String(조건)  :  ? &&&
+	host?name=hong&age=22
+Path Parameter(자원) :
+        host/v1/name/age
+        host/hong/22
+### [POST]
+Body(데이터전달) : host
+
+
+- 프론트는 놀이공원 팔찌라고 생각하면 쉬움(마스크 낀 손님)
+- 서버 : 가게 점주 
+
+# [Nodejs] 세팅부터 실습까지
+
+1. nodejs 설치 
+https://nodejs.org/ko
+
+2. 윈도우보안 해제 (관리자권한으로 해제)
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+3. express 설치
+https://expressjs.com/ko/
+```sh
+npm install express --save
+```
+다음 폴더가 생성됨
+`node_modules`
+`package-lock.json`
+`package.json`
+`(이후 부터는 node_modules폴더를 빼고 공유하고 npm i 로 재설치가능)`
+
+
+4. 홈페이지예제 부터 실습해보기
+```js
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+```
