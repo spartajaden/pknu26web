@@ -2062,7 +2062,7 @@ Body(데이터전달) : host
 - 프론트는 놀이공원 팔찌라고 생각하면 쉬움(마스크 낀 손님)
 - 서버 : 가게 점주 
 
-# [Nodejs] 세팅부터 실습까지
+## [Nodejs] 세팅부터 실습까지
 
 1. nodejs 설치 
 https://nodejs.org/ko
